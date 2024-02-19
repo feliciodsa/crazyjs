@@ -1,7 +1,12 @@
 import { Render, Custom, Form, Input, Between, Link, Button } from "./core/index.js";
 
 Render(components, [
-    Custom('div', ['Login'], {}, {}),
+    Custom('div', ['Login'], {
+        style: `
+        width: 100%; 
+        text-align: center; 
+        font-weight: bold;`
+    }),
     Custom('hr', [], {
         style: `
         width: 100%; 
