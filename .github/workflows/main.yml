@@ -15,13 +15,13 @@ jobs:
           node-version: 12
           registry-url: https://npm.pkg.github.com/
           scope: '@feliciodsa'
+      - run: npm install
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.PGK_TOKEN}}
       - name: Replace values
         shell: bash
         env: 
             MY_PKG_TOKEN: ${{ secrets.PGK_TOKEN }}
         run: |
           sed -i.back "s|PGK_TOKEN|${MY_PKG_TOKEN}|g" ./path/to/.npmrc
-      - run: npm install
-      - run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.PGK_TOKEN}}
