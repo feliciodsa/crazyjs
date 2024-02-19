@@ -16,7 +16,6 @@ jobs:
           registry-url: https://npm.pkg.github.com/
           scope: '@feliciodsa'
       - run: npm install
-      - run: npm publish
       - name: Replace values
         shell: bash
         env: 
