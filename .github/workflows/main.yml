@@ -7,21 +7,21 @@ on:
 
 jobs:
   publish-gpr:
-  runs-on: ubuntu-latest
-  steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v1
-      with:
-        node-version: 12
-        registry-url: https://npm.pkg.github.com/
-        scope: '@feliciodsa'
-    - run: npm install
-    - run: npm publish
-    env:
-      NODE_AUTH_TOKEN: ${{secrets.PGK_TOKEN}}
-    - name: Replace values
-       shell: bash
-       env: 
-          MY_PKG_TOKEN: ${{ secrets.PKG_TOKEN }}
-       run: |
-         sed -i.back "s|PKG_TOKEN|${MY_PKG_TOKEN}|g" ./path/to/.npmrc
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+          registry-url: https://npm.pkg.github.com/
+          scope: '@feliciodsa'
+      - run: npm install
+      - run: npm publish
+      env:
+        NODE_AUTH_TOKEN: ${{secrets.PGK_TOKEN}}
+      - name: Replace values
+        shell: bash
+        env: 
+            MY_PKG_TOKEN: ${{ secrets.PKG_TOKEN }}
+        run: |
+          sed -i.back "s|PKG_TOKEN|${MY_PKG_TOKEN}|g" ./path/to/.npmrc
