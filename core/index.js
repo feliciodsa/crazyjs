@@ -8,5 +8,4 @@ import { Custom } from "./components/Custom.js";
 
 window.components = [];
 
-
 export { Render, Input, Form, Button, Link, Between, Custom }
