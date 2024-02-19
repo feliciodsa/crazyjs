@@ -1,0 +1,36 @@
+a {
+    color: #444444;
+    text-decoration: none;
+}
+
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.form-element {
+    border-radius: 5px;
+    border: 1px solid #CCCCCC;
+    padding: 10px;
+}
+
+.form-button {
+    border-radius: 5px;
+    color: #FFFFFF;
+    border: 1px solid #000000;
+    background-color: #000000;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.twice {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
