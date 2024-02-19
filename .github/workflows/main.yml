@@ -22,6 +22,6 @@ jobs:
       - name: Replace values
         shell: bash
         env: 
-            MY_PKG_TOKEN: ${{ secrets.PKG_TOKEN }}
+            MY_PKG_TOKEN: ${{ secrets.PGK_TOKEN }}
         run: |
-          sed -i.back "s|PKG_TOKEN|${MY_PKG_TOKEN}|g" ./path/to/.npmrc
+          sed -i.back "s|PGK_TOKEN|${MY_PKG_TOKEN}|g" ./path/to/.npmrc
