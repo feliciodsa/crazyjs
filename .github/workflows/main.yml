@@ -21,4 +21,4 @@ jobs:
         env: 
             MY_PKG_TOKEN: ${{ secrets.PGK_TOKEN }}
         run: |
-          sed -i.back "s|PGK_TOKEN|${MY_PKG_TOKEN}|g" ./path/to/.npmrc
+          sed -i.back "s|PGK_TOKEN|${MY_PKG_TOKEN}|g" ./.npmrc
