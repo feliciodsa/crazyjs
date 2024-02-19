@@ -1,9 +1,9 @@
-name: CrazyJS
+name: Node.js Package
 
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   publish-gpr:
@@ -14,8 +14,11 @@ jobs:
         with:
           node-version: 12
           registry-url: https://npm.pkg.github.com/
-          scope: '@feliciodsa'
+          scope: '@YOUR_USERNAME'
       - run: npm install
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.PGK_TOKEN }}
       - name: Replace values
         shell: bash
         env: 
