@@ -1,2 +1,2 @@
 # crazyjs
-Craze JS
+Crazy JS
