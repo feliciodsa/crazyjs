@@ -34,3 +34,19 @@ form {
     justify-content: space-between;
     align-items: center;
 }
+
+.form-button {
+  border-radius: 5px;
+  color: #FFFFFF;
+  border: 1px solid #000000;
+  background-color: #000000;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.twice {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: .75rem;
+}

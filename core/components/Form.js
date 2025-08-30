@@ -1,16 +1,30 @@
-import { AddComponentInMemory } from "../fn/AddComponentInMemory.js"
+import { AddComponentInMemory } from "../fn/AddComponentInMemory.js";
+import { ApplyStyleOrClassList } from "../fn/ApplyStyleOrClassList.js";
+import { ApplyCallbackFn } from "../fn/ApplyCallbackFn.js";
 
-export const Form = (name, childrens, {
-    className,
-    style
-} = attrs) => {
-    const element = document.createElement('form')
-    element.id = name
+export const Form = ({
+  id,
+  className,
+  style,
+  childrens = [],
+  noValidate = true,
+  onSubmit,
+  callback
+} = {}) => {
+  const element = document.createElement('form');
+  if (id) element.id = id;
+  if (noValidate) element.setAttribute('novalidate', '');
 
-    if (className) element.classList = className
-    if (style) element.style = style
+  AddComponentInMemory(window.components, element, childrens);
+  ApplyStyleOrClassList(element, className, style);
 
-    AddComponentInMemory(window.components, element, childrens)
+  const submitHandler = (e) => {
+    e.preventDefault();
+    if (typeof onSubmit === 'function') onSubmit(e);
+  };
+  element.addEventListener('submit', submitHandler);
 
-    return element;
-}
+  ApplyCallbackFn(element, callback);
+
+  return element;
+};

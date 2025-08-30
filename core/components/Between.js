@@ -1,21 +1,17 @@
-import { AddComponentInMemory } from "../fn/AddComponentInMemory.js"
+import { AddComponentInMemory } from "../fn/AddComponentInMemory.js";
+import { ApplyStyleOrClassList } from "../fn/ApplyStyleOrClassList.js";
 
-export const Between = (childrens, {
-    id,
-    className,
-    style
-} = attrs) => {
-    const element = document.createElement('div')
+export const Between = ({
+  id,
+  className = 'twice',
+  style,
+  childrens = []
+} = {}) => {
+  const element = document.createElement('div');
+  if (id) element.id = id;
 
-    if (id) {
-        element.id = id
-    }
+  ApplyStyleOrClassList(element, className, style);
+  AddComponentInMemory(window.components, element, childrens);
 
-    if (className) element.classList = className
-    else if (style) element.style = style
-    else element.classList = 'twice'
-
-    AddComponentInMemory(window.components, element, childrens)
-
-    return element;
-}
+  return element;
+};

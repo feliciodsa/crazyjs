@@ -1,20 +1,16 @@
-import { AddComponentInMemory } from "../fn/AddComponentInMemory.js"
+import { AddComponentInMemory } from "../fn/AddComponentInMemory.js";
+import { ApplyStyleOrClassList } from "../fn/ApplyStyleOrClassList.js";
 
-export const Custom = (tag, childrens, {
-    id,
-    className,
-    style
-} = attrs) => {
-    const element = document.createElement(tag)
+export const Custom = (tag = 'div', childrens = [], {
+  id,
+  className,
+  style
+} = {}) => {
+  const element = document.createElement(tag);
+  if (id) element.id = id;
 
-    if (id) {
-        element.id = id
-    }
+  ApplyStyleOrClassList(element, className, style);
+  AddComponentInMemory(window.components, element, childrens);
 
-    if (className) element.classList = className
-    if (style) element.style = style
-
-    AddComponentInMemory(window.components, element, childrens)
-
-    return element;
-}
+  return element;
+};

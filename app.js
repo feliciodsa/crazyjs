@@ -1,67 +1,48 @@
-import { Render, Custom, Form, Input, Between, Link, Button } from "./core/index.js";
+import { Render, Custom, Input, Button, Reactive } from "./core/index.js";
+
+const Title = Custom('div', ['Login'], {
+  style: `width: 100%; text-align: center; font-weight: bold;`
+});
+
+const Divider = Custom('hr', [], {
+  style: `width: 100%; border: 1px solid #e4e4e4;`
+});
+
+// Input reativo por chave "password"
+const PasswordField = Reactive("password", Input({
+  id: 'password',
+  type: 'password',
+  placeholder: 'Digite sua senha',
+  className: 'form-element',
+  required: true
+}));
+
+// Visualização mascarada usando Reactive em um span (sem precisar acessar sinal global)
+const MaskedView = (() => {
+  const span = Reactive('password', Custom('span'), {
+    format: v => v ? '•'.repeat(String(v).length) : ''
+  });
+  return Custom('div', [ Custom('strong', ['Senha atual: ']), span ]);
+})();
+
+const ClearBtn = Button({
+  text: 'Limpar',
+  className: 'form-button',
+  callback: { click: () => PasswordField.set('') }
+});
+
+const ShowBtn = Button({
+  text: 'Mostrar (console)',
+  className: 'form-button',
+  callback: { click: () => console.log('Senha atual:', PasswordField.get()) }
+});
 
 Render(components, [
-    Custom('div', ['Login'], {
-        style: `
-        width: 100%; 
-        text-align: center; 
-        font-weight: bold;`
-    }),
-    Custom('hr', [], {
-        style: `
-        width: 100%; 
-        border: 1px solid #e4e4e4;`
-    }, {}),
-    //BEGIN Form
-    Form('login', [
-        Input({
-            id: 'email',
-            placeholder: 'Digite seu melhor e-mail',
-            className: 'form-element',
-            required: true
-        }),
-        Input({
-            id: 'password',
-            type: 'password',
-            placeholder: 'Digite sua senha',
-            className: 'form-element',
-            required: true
-        }),
-        Between([
-            Link('Esqueci minha senha', [], {
-                href: 'teste.html',
-            }),
-            Button({
-                id: 'enviar',
-                type: 'submit',
-                text: 'Enviar',
-                placeholder: 'Digite sua senha',
-                className: 'form-button',
-                callback: {
-                    type: 'onclick',
-                    fn: (e) => {
-
-                        e.preventDefault();
-                        const email = window.components.filter((component) => component.id == 'email')[0];
-                        const password = window.components.filter((component) => component.id == 'password')[0];
-
-
-                        console.log(email.value);
-                        console.log(password.value);
-                    }
-                }
-            })
-        ], {}),
-        Custom('hr', [], {
-            style: 'width: 100%; border: 1px solid #e4e4e4'
-        }, {}),
-        Between([
-            Custom('b', ['Não possui conta?'], {}),
-            Link('Cadastre-se', [], {
-                href: 'teste.html',
-                style: `
-                    font-weight: bold`
-            }),
-        ], {}),
-    ], {})//END Form
-])
+  Title,
+  Divider,
+  Custom('div', [PasswordField], { className: 'form-element' }),
+  Custom('br'),
+  MaskedView,
+  Custom('br'),
+  Custom('div', [ClearBtn, ShowBtn], { className: 'twice' }),
+]);

@@ -1,23 +1,33 @@
-import { AddComponentInMemory } from "../fn/AddComponentInMemory.js"
+import { ApplyStyleOrClassList } from "../fn/ApplyStyleOrClassList.js";
 import { ApplyCallbackFn } from "../fn/ApplyCallbackFn.js";
 
-export const Link = (name, childrens, {
-    href,
-    className,
-    style,
-    callback
-} = attrs) => {
-    const element = document.createElement('a')
+export const Link = ({
+  id,
+  href = '#',
+  text,
+  target,
+  download,
+  className,
+  style,
+  ariaLabel,
+  callback
+} = {}) => {
+  const element = document.createElement('a');
 
-    element.id = name
-    element.textContent = name;
-    element.href = href
+  if (id) element.id = id;
+  element.href = href;
+  if (text != null) element.textContent = String(text);
+  if (ariaLabel) element.setAttribute('aria-label', ariaLabel);
 
-    if (className) element.classList = className
-    if (style) element.style = style
+  if (target) {
+    element.target = target;
+    if (target === '_blank') element.rel = 'noopener noreferrer';
+  }
 
-    AddComponentInMemory(window.components, element, childrens)
-    ApplyCallbackFn(element, callback)
+  if (download) element.setAttribute('download', download);
 
-    return element;
-}
+  ApplyStyleOrClassList(element, className, style);
+  ApplyCallbackFn(element, callback);
+
+  return element;
+};
