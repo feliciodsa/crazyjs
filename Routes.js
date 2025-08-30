@@ -7,9 +7,9 @@ export const Routes = Router({
     minLoadingTime: 180,
     prefetchOnHover: true,
     routes: [
-        { path: "/", html: "./pages/home.html", cache: true },
-        { path: "/about", html: "./pages/about.html", cache: true },
-        { path: "/user/:id", html: ({ params }) => `./pages/user-${params.id}.html`, cache: true },
+        { path: "/", html: "./pages/home/home.html", allowScripts: true, cache: false },
+        { path: "/about", html: "./pages/about.html", allowScripts: true, cache: false },
+        { path: "/user/:id", html: ({ params }) => `./pages/user-${params.id}.html`, cache: false },
     ],
     notFound: () => Custom("div", ["404 HTML — não achei a página. ", Link({ href: "#/", text: "Home" })]),
     loading: () => Custom("div", ["Carregando página HTML..."]),

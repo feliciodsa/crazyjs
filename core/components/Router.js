@@ -115,7 +115,11 @@ export const Router = ({
     const mountNodes = (nodes) => {
         const target = mount || el;
         const arr = Array.isArray(nodes) ? nodes : [nodes];
-        Render(window.components, arr, { mount: target, clear: true });
+
+        // >>> memória isolada da view (evita vazar componentes para outras páginas)
+        const viewMemory = [];
+        Render(viewMemory, arr, { mount: target, clear: true });
+
         if (scrollTop) window.scrollTo(0, 0);
     };
 
@@ -178,7 +182,6 @@ export const Router = ({
     if (mode === "hash") window.addEventListener("hashchange", onHash);
     else window.addEventListener("popstate", onPop);
 
-    // init (async-aware)
     onChange();
 
     Object.defineProperty(el, "navigate", { value: navigate });
