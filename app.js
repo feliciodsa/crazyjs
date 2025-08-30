@@ -8,6 +8,11 @@ var Nav = Custom('nav', [
         className: 'flex flex-row items-center font-bold'
     }),
     Custom('div', [
+        Custom('span', ['v0.0.1 Alpha'], { className: 'font-light' })
+    ], {
+        className: 'flex flex-row items-center font-bold'
+    }),
+    Custom('div', [
         Link({ href: '/', text: 'Home', className: 'font-semibold text-white' }),
         Link({ href: '#/about', text: 'About', className: 'font-semibold text-white' })
     ], {
