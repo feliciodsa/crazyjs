@@ -1,23 +1,23 @@
-import { Render, Custom, Input, Button, Reactive, Link, Router } from "./core/index.js";
+import { Render, Custom, Link } from "./core/index.js";
+import { Routes } from "./Routes.js";
 
-
-const Routes = Router({
-    mode: "hash",
-    routes: [
-        { path: "/", html: "./pages/home.html", cache: true },
-        { path: "/about", html: "./pages/about.html" },
-        // dinâmico: tenta carregar ./pages/user-<id>.html
-        { path: "/user/:id", html: ({ params }) => `./pages/user-${params.id}.html` },
-    ],
-    notFound: () => Custom("div", ["404 HTML — não achei a página. ", Link({ href: "#/", text: "Home" })]),
-    loading: () => Custom("div", ["Carregando página HTML..."]),
-    onError: (err) => Custom("div", [`Falha ao carregar: ${err.message}`])
+var Nav = Custom('nav', [
+    Custom('div', [
+        'Reax UI'
+    ], {
+        className: 'flex flex-row items-center font-bold'
+    }),
+    Custom('div', [
+        Link({ href: '/', text: 'Home', className: 'font-semibold text-white' }),
+        Link({ href: '#/about', text: 'About', className: 'font-semibold text-white' })
+    ], {
+        className: 'flex flex-row items-center gap-4'
+    })
+], {
+    className: 'w-full flex flex-row justify-between items-center p-4 bg-blue-500 text-white'
 })
 
 Render(components, [
-    Custom('nav', [
-        Link({ href: '/', text: 'Home' }),
-        Link({ href: '#/about', text: 'About' })
-    ]),
+    Custom('div', [Nav]),
     Routes
 ]);

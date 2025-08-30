@@ -1,52 +1,45 @@
-a {
-    color: #444444;
-    text-decoration: none;
+/* Base: use tokens em todo o app */
+body {
+    background: var(--bg);
+    color: var(--text);
 }
 
-
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: 100%;
-    max-width: 300px;
-    margin-left: auto;
-    margin-right: auto;
+.card {
+    background: var(--surface);
+    border: 1px solid var(--border);
 }
 
-.form-element {
-    border-radius: 5px;
-    border: 1px solid #CCCCCC;
-    padding: 10px;
+.muted {
+    color: var(--text-muted);
 }
 
 .form-button {
-    border-radius: 5px;
-    color: #FFFFFF;
-    border: 1px solid #000000;
-    background-color: #000000;
-    padding: 10px;
+    background: var(--primary);
+    color: var(--on-primary);
+    border: 1px solid var(--primary);
+    border-radius: 10px;
+    padding: 10px 14px;
     cursor: pointer;
+    transition: background .2s ease, transform .05s ease;
 }
 
-.twice {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.form-button:hover {
+    background: var(--primary-hover);
 }
 
-.form-button {
-  border-radius: 5px;
-  color: #FFFFFF;
-  border: 1px solid #000000;
-  background-color: #000000;
-  padding: 10px;
-  cursor: pointer;
+.form-button:active {
+    transform: translateY(1px);
 }
 
-.twice {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: .75rem;
+a {
+    color: var(--accent);
+}
+
+:focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+}
+
+.border {
+    border: 1px solid var(--border);
 }

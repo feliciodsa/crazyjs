@@ -1,3 +1,4 @@
+// core/components/Router.js (HTML-aware)
 import { Render } from "../fn/index.js";
 import { Custom } from "./Custom.js";
 import { Link } from "./Link.js";
