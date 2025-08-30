@@ -1,9 +1,9 @@
-import { Custom } from "./Custom.js";
+import { ReaxUI } from "./ReaxUI.js";
 
-export const Skeleton = () => Custom('div', [
-    Custom('div', [], { className: 'sk sk-lg' }),
-    Custom('div', [], { className: 'sk' }),
-    Custom('div', [], { className: 'sk sk-sm' }),
+export const Skeleton = () => ReaxUI('div', [
+  ReaxUI('div', [], { className: 'sk sk-lg' }),
+  ReaxUI('div', [], { className: 'sk' }),
+  ReaxUI('div', [], { className: 'sk sk-sm' }),
 ]);
 
 // CSS do skeleton (pulso)

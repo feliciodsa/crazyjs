@@ -1,7 +1,7 @@
 import { AddComponentInMemory } from "../fn/AddComponentInMemory.js";
 import { ApplyStyleOrClassList } from "../fn/ApplyStyleOrClassList.js";
 
-export const Custom = (tag = 'div', childrens = [], {
+export const ReaxUI = (tag = 'div', childrens = [], {
   id,
   className,
   style

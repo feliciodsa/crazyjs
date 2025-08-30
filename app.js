@@ -1,13 +1,13 @@
-import { Render, Custom, Link } from "./core/index.js";
+import { Render, ReaxUI, Link } from "./core/index.js";
 import { Routes } from "./Routes.js";
 
-var Nav = Custom('nav', [
-    Custom('div', [
+var Nav = ReaxUI('nav', [
+    ReaxUI('div', [
         'Reax UI'
     ], {
         className: 'flex flex-row items-center font-bold'
     }),
-    Custom('div', [
+    ReaxUI('div', [
         Link({ href: '/', text: 'Home', className: 'font-semibold text-white' }),
         Link({ href: '#/about', text: 'About', className: 'font-semibold text-white' })
     ], {
@@ -18,6 +18,8 @@ var Nav = Custom('nav', [
 })
 
 Render(components, [
-    Custom('div', [Nav]),
+    ReaxUI('div', [
+        Nav
+    ]),
     Routes
 ]);
