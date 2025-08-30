@@ -1,47 +1,23 @@
-import { Render, Custom, Input, Button, Reactive, MaskedView } from "./core/index.js";
+import { Render, Custom, Input, Button, Reactive, Link, Router } from "./core/index.js";
 
-const Title = Custom('div', ['Login'], {
-    style: 'width: 100%,background-color: #000000'
-});
 
-const FieldEmail = Reactive(
-    'email',
-    Input({
-        type: 'text',
-        required: true,
-        placeholder: 'E-mail'
-    })
-)
-
-const FieldPassword = Reactive(
-    'password',
-    Input({
-        type: 'password',
-        required: true,
-        placeholder: 'Senha'
-    })
-)
-
-const BtnSend = Button({
-    type: 'submit',
-    text: 'Login',
-    style: 'width: 100%',
-    callback: {
-        click: () => {
-            console.log(FieldEmail.value)
-            console.log(FieldPassword.value)
-        }
-    }
+const Routes = Router({
+    mode: "hash",
+    routes: [
+        { path: "/", html: "./pages/home.html", cache: true },
+        { path: "/about", html: "./pages/about.html" },
+        // dinâmico: tenta carregar ./pages/user-<id>.html
+        { path: "/user/:id", html: ({ params }) => `./pages/user-${params.id}.html` },
+    ],
+    notFound: () => Custom("div", ["404 HTML — não achei a página. ", Link({ href: "#/", text: "Home" })]),
+    loading: () => Custom("div", ["Carregando página HTML..."]),
+    onError: (err) => Custom("div", [`Falha ao carregar: ${err.message}`])
 })
 
-const PassMaskedDefault = MaskedView('password', { label: 'Senha (•):' });
-const PassMaskedLast2 = MaskedView('password', { label: 'Senha (2 últimos):', show: 'last2' });
-
 Render(components, [
-    Title,
-    FieldEmail,
-    FieldPassword,
-    BtnSend,
-    PassMaskedDefault,
-    PassMaskedLast2
+    Custom('nav', [
+        Link({ href: '/', text: 'Home' }),
+        Link({ href: '#/about', text: 'About' })
+    ]),
+    Routes
 ]);
