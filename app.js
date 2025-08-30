@@ -41,10 +41,7 @@ Render(components, [
                     type: 'onclick',
                     fn: (e) => {
 
-                        if (e.target.type !== 'submit') {
-                            e.preventDefault();
-                        }
-
+                        e.preventDefault();
                         const email = window.components.filter((component) => component.id == 'email')[0];
                         const password = window.components.filter((component) => component.id == 'password')[0];
 
