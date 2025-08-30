@@ -1,5 +1,5 @@
 import { Render } from "../fn/index.js";
-import { ReaxUI } from "./ReaxUI.js";
+import { Custom } from "./Custom.js";
 import { Link } from "./Link.js";
 
 const parseQuery = (qs) => {
@@ -68,7 +68,7 @@ const loadHtml = async (url, { cache = true, allowScripts = false, fetchOptions 
 
 export const Router = ({
     routes = [],            // [{ path, view? , html?: string | (ctx)=>string , allowScripts?, cache?, fetchOptions?, beforeEnter? }]
-    notFound = () => ReaxUI("div", [
+    notFound = () => Custom("div", [
         "404 — rota não encontrada. ",
         Link({ href: "#/", text: "Voltar ao início" })
     ]),
@@ -79,10 +79,10 @@ export const Router = ({
     beforeEach,
     afterEach,
     // feedback UIs
-    loading = () => ReaxUI("div", ["Carregando..."]),
-    onError = (err) => ReaxUI("div", [`Erro ao carregar página: ${err.message || err}`]),
+    loading = () => Custom("div", ["Carregando..."]),
+    onError = (err) => Custom("div", [`Erro ao carregar página: ${err.message || err}`]),
 } = {}) => {
-    const el = ReaxUI("div", [], { id: "router-view" });
+    const el = Custom("div", [], { id: "router-view" });
     const table = routes.map(r => ({ ...r, ...compile(r.path || "/") }));
 
     const getLoc = () => {
