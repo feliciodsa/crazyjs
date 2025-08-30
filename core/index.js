@@ -8,6 +8,8 @@ import { Custom } from "./components/Custom.js";
 import { MaskedView } from "./components/MaskedView.js";
 import { Router } from "./components/Router.js";
 import { Skeleton } from "./components/Skeleton.js";
+import { Image } from "./components/Image.js";
+
 window.components = [];
 
 export {
@@ -21,5 +23,6 @@ export {
     Custom,
     Reactive,
     Router,
-    Skeleton
+    Skeleton,
+    Image
 }
