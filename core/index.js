@@ -5,7 +5,8 @@ import { Button } from "./components/Button.js";
 import { Link } from "./components/Link.js";
 import { Between } from "./components/Between.js";
 import { Custom } from "./components/Custom.js";
+import { MaskedView } from "./components/MaskedView.js";
 
 window.components = [];
 
-export { Render, Input, Form, Button, Link, Between, Custom, Reactive }
+export { Render, Input, MaskedView, Form, Button, Link, Between, Custom, Reactive }
