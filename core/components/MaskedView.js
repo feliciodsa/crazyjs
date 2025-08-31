@@ -1,5 +1,5 @@
 import { Reactive } from "../index.js";
-import { Custom } from "./Custom.js";
+import { Element } from "./Element.js";
 
 export const MaskedView = (key, {
     label = null,
@@ -24,11 +24,11 @@ export const MaskedView = (key, {
     };
 
     const maskFn = makeMask(show);
-    const masked = Reactive(key, Custom(as, [], { className, style }), { format: maskFn });
+    const masked = Reactive(key, Element(as, [], { className, style }), { format: maskFn });
 
     return label
-        ? Custom('div', [
-            Custom('strong', [label], { className: labelClass, style: labelStyle }),
+        ? Element('div', [
+            Element('strong', [label], { className: labelClass, style: labelStyle }),
             masked
         ])
         : masked;

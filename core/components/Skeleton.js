@@ -1,7 +1,7 @@
-import { Custom } from "./Custom.js";
+import { Element } from "./Element.js";
 
-export const Skeleton = () => Custom('div', [
-  Custom('div', [], { className: 'sk sk-lg' }),
-  Custom('div', [], { className: 'sk' }),
-  Custom('div', [], { className: 'sk sk-sm' }),
+export const Skeleton = () => Element('div', [
+  Element('div', [], { className: 'sk sk-lg' }),
+  Element('div', [], { className: 'sk' }),
+  Element('div', [], { className: 'sk sk-sm' }),
 ]);

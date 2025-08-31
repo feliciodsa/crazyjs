@@ -1,4 +1,4 @@
-import { Render, Custom, Router } from "./core/index.js";
+import { Render, Element, Router } from "./core/index.js";
 import { Nav } from "./pages/ui/nav/index.js";
 import { Footer } from "./pages/ui/footer/index.js"; // se tiver
 
@@ -10,10 +10,10 @@ const router = Router({
     ]
 });
 
-const AppLayout = Custom('div', [
-    Custom('header', [Nav]),                   // fica sempre
-    Custom('main', [router], { id: 'main' }),  // Router trocando só aqui
-    Custom('footer', [Footer ? Footer : ''])   // opcional
+const AppLayout = Element('div', [
+    Element('header', [Nav]),                   // fica sempre
+    Element('main', [router], { id: 'main' }),  // Router trocando só aqui
+    Element('footer', [Footer ? Footer : ''])   // opcional
 ]);
 
 Render(components, [AppLayout], { clear: true });

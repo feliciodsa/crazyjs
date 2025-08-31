@@ -1,4 +1,4 @@
-import { Button, Custom, Input, Reactive, Render } from "../../core/index.js";
+import { Button, Element, Input, Reactive, Render } from "../../core/index.js";
 
 const mount = document.querySelector('#home'); // escopo pela seção
 
@@ -18,12 +18,12 @@ const BtnPrint = Button({
     callback: { click: () => console.log('value:', FieldEmail.value) }
 });
 
-const Box = Reactive(KEY, Custom('div', [], {
+const Box = Reactive(KEY, Element('div', [], {
     className: 'h-10 bg-blue-100 text-blue-500 p-2 rounded-md'
 }));
 
-const view = Custom('div', [
-    Custom('b', ['This field is Reactive:']),
+const view = Element('div', [
+    Element('b', ['This field is Reactive:']),
     FieldEmail,
     'But this button is not!',
     BtnPrint,

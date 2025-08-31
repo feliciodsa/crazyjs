@@ -1,10 +1,10 @@
-import { Custom } from "../../../core/index.js";
+import { Element } from "../../../core/index.js";
 
-export const Footer = Custom('footer', [
+export const Footer = Element('footer', [
     '@2025 - All rights reserved. ',
-    Custom('b', ['BOOUT Solutions']),
-    Custom('br'),
-    Custom('br'),
+    Element('b', ['BOOUT Solutions']),
+    Element('br'),
+    Element('br'),
 ], {
     className: 'w-10/12 mx-auto text-center border-t-1 border-t-gray-300 py-2'
 })

@@ -1,4 +1,4 @@
-import { Custom, Link, Router, Skeleton } from "./core/index.js";
+import { Element, Link, Router, Skeleton } from "./core/index.js";
 
 export const Routes = Router({
     mode: "hash",
@@ -11,8 +11,8 @@ export const Routes = Router({
         { path: "/about", html: "./pages/about.html", allowScripts: true, cache: false },
         { path: "/user/:id", html: ({ params }) => `./pages/user-${params.id}.html`, cache: false },
     ],
-    notFound: () => Custom("div", ["404 HTML — não achei a página. ", Link({ href: "#/", text: "Home" })]),
-    loading: () => Custom("div", ["Carregando página HTML..."]),
-    onError: (err) => Custom("div", [`Falha ao carregar: ${err.message}`]),
+    notFound: () => Element("div", ["404 HTML — não achei a página. ", Link({ href: "#/", text: "Home" })]),
+    loading: () => Element("div", ["Carregando página HTML..."]),
+    onError: (err) => Element("div", [`Falha ao carregar: ${err.message}`]),
     loading: () => Skeleton(),
 })
