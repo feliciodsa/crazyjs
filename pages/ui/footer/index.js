@@ -6,5 +6,5 @@ export const Footer = Custom('footer', [
     Custom('br'),
     Custom('br'),
 ], {
-    className: 'w-10/12 mx-auto text-center'
+    className: 'w-10/12 mx-auto text-center border-t-1 border-t-gray-300 py-2'
 })
