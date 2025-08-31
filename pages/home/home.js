@@ -25,11 +25,11 @@ const Box = Reactive(KEY, Custom('div', [], {
 const view = Custom('div', [
     Custom('b', ['This field is Reactive:']),
     FieldEmail,
-    'But this box is Reactive',
-    Box,
     'But this button is not!',
     BtnPrint,
-], { className: 'w-10/12 mx-auto mt-60 border-1 border-gray-300 p-4 rounded-md flex flex-col gap-4' });
+    'But this box is Reactive',
+    Box,
+], { className: 'w-8/12 mx-auto mt-48 sm:mt-70 md:mt-70 border-1 border-gray-300 p-4 rounded-md flex flex-col gap-4' });
 
 // 👇 memória local (não usa `components`) e monta só no home-root
 Render([], [view], { mount, clear: true });
